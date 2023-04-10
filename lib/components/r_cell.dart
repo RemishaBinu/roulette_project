@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:roulette_project/enums/o_cell_type.dart';
 import 'package:roulette_project/enums/r_cell_type.dart';
+import 'package:roulette_project/models/BetModel.dart';
+import 'package:roulette_project/providers/table_select_provider.dart';
 
 class RCell extends StatelessWidget{
   final String cellEntry;
@@ -8,7 +12,19 @@ class RCell extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return cell();
+    return Stack(
+      children: [
+        Container(child: cell()),
+        Consumer<TableSelectProvider>(builder: (context, value, child) {
+          List<BetModel> existing = value.getBet(OCellType.middle, 2);
+          return (existing != null && existing.length > 0)?Positioned.fill(child: Container(
+            decoration: BoxDecoration(
+              color: Color.fromARGB(125, 200, 200, 200)
+            ),
+          )): Text("");
+        },)
+      ],
+    );
   }
 
   cell(){
