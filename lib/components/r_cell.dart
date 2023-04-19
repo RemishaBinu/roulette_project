@@ -16,12 +16,12 @@ class RCell extends StatelessWidget{
       children: [
         Container(child: cell()),
         Consumer<TableSelectProvider>(builder: (context, value, child) {
-          List<BetModel> existing = value.getBet(OCellType.middle, 2);
-          return (existing != null && existing.length > 0)?Positioned.fill(child: Container(
-            decoration: BoxDecoration(
+          bool existing = value.getBetByValue(cellEntry);
+          return (existing)?Positioned.fill(child: Container(
+            decoration: const BoxDecoration(
               color: Color.fromARGB(125, 200, 200, 200)
             ),
-          )): Text("");
+          )): const Text("");
         },)
       ],
     );

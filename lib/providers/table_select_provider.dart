@@ -21,4 +21,48 @@ class TableSelectProvider extends ChangeNotifier{
     bets.add(BetModel(cellType: cellType, betVal: betVal, data: data));
     notifyListeners();
   }
+
+  bool getBetByValue(String value){
+    return getCalculatedValues()
+      .any((element) => element == value);
+  }
+
+  List<String> getCalculatedValues(){
+    List<String> values = [];
+    insert(String value) {
+      if(values.contains(value)){
+        return;
+      }
+      values.add(value);
+    }
+    for (var bet in bets) {
+      if(bet.cellType == OCellType.middle){
+        insert("${bet.data}");
+      }
+      if(bet.cellType == OCellType.part){
+        for(int i=bet.data[0]; i<= bet.data[1]; i++){
+          insert("$i");
+        }
+      }
+      if(bet.cellType == OCellType.even){
+        for(int i = 0; i<= 36; i++){
+          if((i%2) == 0){
+            insert("$i");
+          }
+        }
+      }
+      if(bet.cellType == OCellType.odd){
+        for(int i = 0; i<= 36; i++){
+          if((i%2) != 0){
+            insert("$i");
+          }
+        }
+      }
+      if(bet.cellType == OCellType.corner){
+        (bet.data as List<int>)
+          .forEach((element) {insert('$element');});
+      }
+    }
+    return values;
+  }
 }

@@ -3,7 +3,7 @@ enum OCellType {
   edge,
   corner4,
   corner3,
-  corner2,
+  corner,
   part,
   color,
   even,

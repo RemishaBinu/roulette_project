@@ -25,11 +25,12 @@ class OCell extends StatelessWidget{
       top: t,
       left: l,
       child: InkWell(
+        mouseCursor: SystemMouseCursors.click,
         child: Container(
           width: w,
           height: h,
           decoration: BoxDecoration(
-            color: Colors.yellow
+            color: Color.fromARGB(136, 255, 235, 59)
           ),
           child: Text(""),
         ),
