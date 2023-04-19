@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:roulette_project/components/roulette_table.dart';
 import 'package:roulette_project/game_deck.dart';
+import 'package:roulette_project/providers/game_provider.dart';
+import 'package:roulette_project/providers/game_score_provider.dart';
+import 'package:roulette_project/providers/table_select_provider.dart';
 import 'package:roulette_project/roulette_wheel.dart';
 import 'package:roulette_project/wheel_animation.dart';
 
@@ -15,10 +19,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      
-      home: GameDeck()
-    );
+        home: MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (ccontext) => TableSelectProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ccontext) => GameProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ccontext) => GameScoreProvider(),
+        )
+      ],
+      child: GameDeck(),
+    ));
   }
 }
-
-

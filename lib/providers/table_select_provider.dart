@@ -5,6 +5,11 @@ import 'package:roulette_project/models/BetModel.dart';
 class TableSelectProvider extends ChangeNotifier{
   List<BetModel> bets = [];
 
+  reset(){
+    bets = [];
+    notifyListeners();
+  }
+
   getBet(OCellType cellType, dynamic data){
     return bets
       .where((element) => element.cellType == cellType && element.data == data)
@@ -25,6 +30,10 @@ class TableSelectProvider extends ChangeNotifier{
   bool getBetByValue(String value){
     return getCalculatedValues()
       .any((element) => element == value);
+  }
+
+  bool hasBet(){
+    return bets.isNotEmpty;
   }
 
   List<String> getCalculatedValues(){

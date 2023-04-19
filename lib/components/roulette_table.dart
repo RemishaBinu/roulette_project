@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:roulette_project/enums/r_cell_type.dart';
+import 'package:roulette_project/roulette_wheel.dart';
 import './r_cell.dart';
 
 class RouletteTable extends StatefulWidget{
@@ -15,10 +16,8 @@ class RouletteTableState extends State<RouletteTable>{
   Widget build(BuildContext context) {
     return Row(
       children: [
+        
         Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.white, width: 1)
-          ),
           child: Column(
             
             children: [

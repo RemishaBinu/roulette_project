@@ -30,7 +30,7 @@ class OCell extends StatelessWidget{
           width: w,
           height: h,
           decoration: BoxDecoration(
-            color: Color.fromARGB(136, 255, 235, 59)
+            color: Color.fromARGB(0, 255, 235, 59)
           ),
           child: Text(""),
         ),
