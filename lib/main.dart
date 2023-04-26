@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:roulette_project/components/roulette_table.dart';
-import 'package:roulette_project/game_deck.dart';
 import 'package:roulette_project/providers/game_provider.dart';
 import 'package:roulette_project/providers/game_score_provider.dart';
 import 'package:roulette_project/providers/table_select_provider.dart';
-import 'package:roulette_project/roulette_wheel.dart';
-import 'package:roulette_project/wheel_animation.dart';
+import 'package:roulette_project/user/signup.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (ccontext) => TableSelectProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (ccontext) => GameProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (ccontext) => GameScoreProvider(),
+      ),
+    ],
+    builder: (context, child) {
+      return const MyApp();
+    },
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -18,20 +30,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (ccontext) => TableSelectProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (ccontext) => GameProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (ccontext) => GameScoreProvider(),
-        )
-      ],
-      child: GameDeck(),
-    ));
+    return const MaterialApp(debugShowCheckedModeBanner: false, 
+           home: SignUp());
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class WheelAnimation extends StatefulWidget {
   const WheelAnimation({super.key});
 
@@ -33,21 +32,19 @@ class WheelAnimationState extends State<WheelAnimation>
       body: Center(
         child: RotationTransition(
           turns: _animation,
-          child:  Stack(children: [
-          Positioned(
-              child: Align(
-                  alignment: Alignment.center,
-                  child: 
-                       Image.asset('assets/images/wheel.png'))),
-           Positioned(
-              child: Align(
-                  alignment: Alignment.topCenter,
-                  child: Icon(Icons.place,
-                      size: 40, color: Color.fromRGBO(241, 154, 100, 1))))
+          child: Stack(children: [
+            Positioned(
+                child: Align(
+                    alignment: Alignment.center,
+                    child: Image.asset('assets/images/wheel.png'))),
+            const Positioned(
+                child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Icon(Icons.place,
+                        size: 40, color: Color.fromRGBO(241, 154, 100, 1))))
           ]),
-          ),
         ),
-      );
-    
+      ),
+    );
   }
 }

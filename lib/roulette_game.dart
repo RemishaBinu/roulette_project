@@ -38,14 +38,14 @@ class _RouletteGameState extends State<RouletteGame>
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: Text('Result'),
+              title: const Text('Result'),
               content: Text('You got $_result'),
               actions: [
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text('OK'),
+                  child: const Text('OK'),
                 ),
               ],
             );
@@ -72,7 +72,7 @@ class _RouletteGameState extends State<RouletteGame>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Roulette Wheel'),
+        title: const Text('Roulette Wheel'),
       ),
       body: Center(
         child: Column(
@@ -85,10 +85,10 @@ class _RouletteGameState extends State<RouletteGame>
                 width: 300,
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             ElevatedButton(
               onPressed: _play,
-              child: Text('Spin the Wheel'),
+              child: const Text('Spin the Wheel'),
             ),
           ],
         ),
